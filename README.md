@@ -4,7 +4,7 @@
 ## Defuncions per COVID-19, anàlisi exploratòria
 ### En funció del sexe, comunitat autònoma i setmana de defunció
 
-
+sofvneifvneqpf
 
 
 ### Quines varen ser les pitjors setmanes de la pandèmia?
