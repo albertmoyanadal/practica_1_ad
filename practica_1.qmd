@@ -42,11 +42,11 @@ D'un primer cop d'ull podem veure que tenim 126000 observacions amb 6 variables 
 Aquí ja ens hem trobat el primer problema, resulta que les dades no estan en format *tidy* i presenten un tipus de repeticions, per exemple, hi ha una columna que ens mostra el total de defuncions de cada una de les categories, però dins la mateixa columna, tenim el total de morts per Covid 19, el total de morts homes de Covid 19 i, entre d'altres, el total de morts a La Rioja que són dones i sospitoses d'haver tengut el Covid 19. Això ens ha donat alguns problemes, però emprant alguns filtres ho hem solucionat.
 
 
-## Anàlisi exploratori
+## Anàlisi exploratòria
 
-Una vegada hem entés com tenim les dades estructurades, ens podem fer algunes preguntes sobre aquestes.
+Una vegada hem entès com tenim les dades estructurades, en aquest treball donarem resposta a les següents preguntes: 
 
-### Afecta de manera similar a homes o dones?
+### Hi ha diferències significatives entre homes i dones?
 
 Una bona pregunta per començar l'anàlisi és veure si és rellevant separar per gèneres, amb el següent diagrama podem observar els resultats:
 
@@ -57,10 +57,10 @@ pie(c(cov_homes$DefTotal[1], cov_dones$DefTotal[1]) , labels = c("Homes", "Dones
 
 ```
 
-D'aquí podem observar que més o manco tenim la mateixa proporció d'homes i dones, per tant podem concloure en que no hi ha una diferència de gènere.
+D'aquí podem observar que més o manco tenim la mateixa proporció d'homes i dones i, per tant, podem concloure en que no hi ha una diferència de gènere.
 
 
-### Com van evolucionar les defuncions de la Covid-19 setmanalment?
+### Com va evolucionar la mortalitat de la pandèmia?
 
 En el següent diagrama podem veure que l'evolució de les defuncions de Covid-19 avuluat en les primeres 53 setmanes:
 
@@ -84,7 +84,7 @@ cov_Total <- cov_Total[-1,]
 data = data.frame(cov_Total[,5]);
 boxplot(data)
 ```
-ghkjk
+
 
 
 
