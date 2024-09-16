@@ -101,4 +101,4 @@ barplot(height = data_CAut$DefTotal, name = data_CAut$CAut)
 ```
 
 
-Aquest gràfic ens mostra que les Comunitats amb més població també són les que tenen més defuncions.
+Aquest gràfic ens mostra que les Comunitats amb més mortalitat són Andalusia, Madrid, Catalunya i País Basc que, coincideix amb aquelles comunitats més poblades i amb grans ciutats. 
