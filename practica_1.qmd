@@ -42,8 +42,7 @@ D'un primer cop d'ull podem veure que tenim 126000 observacions amb 6 variables 
 Aquí ja ens hem trobat el primer problema, resulta que les dades no estan en format *tidy* i presenten un tipus de repeticions, per exemple, hi ha una columna que ens mostra el total de defuncions de cada una de les categories, però dins la mateixa columna, tenim el total de morts per Covid 19, el total de morts homes de Covid 19 i, entre d'altres, el total de morts a La Rioja que són dones i sospitoses d'haver tengut el Covid 19. Això ens ha donat alguns problemes, però emprant alguns filtres ho hem solucionat.
 
 
-## Anàlisi exploratòria
-
+## Anàlisi exploratori
 
 Una vegada hem entés com tenim les dades estructurades, ens podem fer algunes preguntes sobre aquestes.
 
@@ -67,9 +66,10 @@ En el següent diagrama podem veure que l'evolució de les defuncions de Covid-1
 
 ```{r}
 cov_Total <- filter(df, Sex == "Total", CAut == "", Cv19 == "Total")
-cov_Total$SemanaDef <- c(1:54)
+cov_Total <- cov_Total[-1,]
+cov_Total$SemanaDef <- c(1:53)
 
-ggplot(cov_Total[-1,], aes(x = SemanaDef, y = DefTotal, group = DefTotal)) + geom_point(color = "red", size = 2) + labs(title = "Evolució de la pandèmia per setmanes")+ theme(plot.title = element_text(hjust = 0.5, size = 16, face = "bold", color = "black"))
+ggplot(cov_Total, aes(x = SemanaDef, y = DefTotal, group = DefTotal)) + geom_point(color = "red", size = 2) + labs(title = "Evolució de la pandèmia per setmanes")+ theme(plot.title = element_text(hjust = 0.5, size = 16, face = "bold", color = "black"))
 ```
 
 Aquí podem veure que hi ha dues 3 ones on la malaltia va causar moltes morts, on les dues primeres varen ser més fortes que la darrera.
@@ -77,6 +77,14 @@ Aquí podem veure que hi ha dues 3 ones on la malaltia va causar moltes morts, o
 
 
 
+
+```{r}
+library(ggplot2)
+cov_Total <- cov_Total[-1,]
+data = data.frame(cov_Total[,5]);
+boxplot(data)
+```
+ghkjk
 
 
 
