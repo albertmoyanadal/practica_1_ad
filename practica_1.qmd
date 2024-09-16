@@ -6,6 +6,14 @@ editor: visual
  
 **Autors:** Melcion Ciudad, Miquel Àngel Llauger, Albert Moya.
 
+```{r, echo=FALSE}
+library(tidyverse)
+library(RColorBrewer)
+myPalette <- brewer.pal(5, "Set2")
+```
+
+
+
 
 ## Introducció
 
@@ -15,13 +23,16 @@ El que farem primer serà carregar el fitxer de dades i veure un petit resum de 
 
 
 ```{r}
-df <- read.csv("covid.csv", header = TRUE, sep = ";")
+df <- read.csv("covid.csv", header = TRUE, sep = ";", stringsAsFactors = FALSE)
 str(df)
+names(df) = c("Nacional", "CAut","Cv19","Sex","SemanaDef","DefTotal");
+df <- df[,-1];
+head(df)
 ```
 
 D'un primer cop d'ull podem veure que tenim 126000 observacions amb 6 variables cada una. Aquestes són:
 
-- Nacional: és repeteix a totes les observacions, per tant no ofereix informació rellevant
+- Nacional: és repeteix a totes les observacions, per tant no ofereix informació rellevant i l'hem eliminat del dataframe
 - Comunidades y ciudades autónomas: dades qualitatives que mostra les comunitats autonomes d'Espanya
 - Covid 19: Indíca la relació amb la malaltia, si és sospitós, identificat...
 - Sexo
@@ -32,6 +43,41 @@ Aquí ja ens hem trobat el primer problema, resulta que les dades no estan en fo
 
 
 ## Anàlisi exploratori
+
+Una vegada hem entés com tenim les dades estructurades, ens podem fer algunes preguntes sobre aquestes.
+
+### Afecta de manera similar a homes o dones?
+
+Una bona pregunta per començar l'anàlisi és veure si és rellevant separar per gèneres, amb el següent diagrama podem observar els resultats:
+
+```{r, echo=FALSE}
+cov_homes = filter(df, Sex== "Hombres", CAut == "", Cv19 == "Total")
+cov_dones = filter(df, Sex== "Mujeres", CAut== "", Cv19 == "Total")
+pie(c(cov_homes$DefTotal[1], cov_dones$DefTotal[1]) , labels = c("Homes", "Dones"), border="white", col = myPalette )
+
+```
+
+D'aquí podem observar que més o manco tenim la mateixa proporció d'homes i dones, per tant podem concloure en que no hi ha una diferència de gènere.
+
+
+### Com van evolucionar les defuncions de la Covid-19 setmanalment?
+
+En el següent diagrama podem veure que l'evolució de les defuncions de Covid-19 avuluat en les primeres 53 setmanes:
+
+```{r}
+cov_Total <- filter(df, Sex == "Total", CAut == "", Cv19 == "Total")
+cov_Total$SemanaDef <- c(1:54)
+
+ggplot(cov_Total[-1,], aes(x = SemanaDef, y = DefTotal, group = DefTotal)) + geom_point(color = "red", size = 2) + labs(title = "Evolució de la pandèmia per setmanes")+ theme(plot.title = element_text(hjust = 0.5, size = 16, face = "bold", color = "black"))
+```
+
+Aquí podem veure que hi ha dues 3 ones on la malaltia va causar moltes morts, on les dues primeres varen ser més fortes que la darrera.
+
+
+
+
+
+
 
 
 
