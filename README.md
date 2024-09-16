@@ -8,12 +8,6 @@
 
 
 ### Quines varen ser les pitjors setmanes de la pandèmia?
-S'observa el gràfic de morts per setmana: 
-
---gràfic--
-
-
-
 
 ### Diferències entre sospitosos i diagnosticats
 
