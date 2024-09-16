@@ -9,9 +9,9 @@ editor: visual
 ```{r, echo=FALSE}
 library(tidyverse)
 library(RColorBrewer)
+library(ggplot2)
 myPalette <- brewer.pal(5, "Set2")
 ```
-
 
 
 
@@ -76,19 +76,29 @@ Després de la nostra anàlisi, podem observar en el gràfic que l'evolució de 
 
 
 
+### Quina és la mitjana de defuncions per setmanes?
+
+Ara podem mirar quina és la mitjana de defuncions en el primer any, seguint la següent instrucció, dibuixam un *box-plot* amb la informació:
 
 
 ```{r}
-library(ggplot2)
-cov_Total <- cov_Total[-1,]
 data = data.frame(cov_Total[,5]);
 boxplot(data)
 ```
 
+Com a resultat podem veure que tenim una setmana amb molt poques defuncions i la resta està tot bastant concentrat.
 
 
+### Quina comunitat autònoma ha tengut més defuncions?
 
 
+```{r}
+cov_ComAut = filter(df, Sex== "Total", CAut!= "", Cv19 == "Total", SemanaDef == "Total")
+data_CAut = cov_ComAut[,c(1,5)]
+data_CAut$CAut
+data_CAut$CAut <- 1:19
+barplot(height = data_CAut$DefTotal, name = data_CAut$CAut)
+```
 
 
-
+Aquest gràfic ens mostra que les Comunitats amb més població també són les que tenen més defuncions.
