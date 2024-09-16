@@ -5,7 +5,7 @@
 ### En funció del sexe, comunitat autònoma i setmana de defunció
 
 sofvneifvneqpf
-
+wrvw
 
 ### Quines varen ser les pitjors setmanes de la pandèmia?
 
