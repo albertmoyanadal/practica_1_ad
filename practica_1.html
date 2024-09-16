@@ -97,13 +97,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p><strong>Autors:</strong> Melcion Ciudad, Miquel Àngel Llauger, Albert Moya.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>myPalette <span class="ot">&lt;-</span> <span class="fu">brewer.pal</span>(<span class="dv">5</span>, <span class="st">"Set2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <section id="introducció" class="level2">
 <h2 class="anchored" data-anchor-id="introducció">Introducció</h2>
 <p>Hem elegit el dataset <a href="https://datos.gob.es/es/catalogo/ea0010587-defunciones-por-covid-19-comunidad-y-ciudad-autonoma-de-defuncion-sexo-y-semana-de-defuncion-ecm-identificador-api-tpx-sociedad_2589-salud_2590-edcm_2591-covid_a2022_10380-l0-01007-px1">Defunciones por Covid 19</a> de la pàgina web de dades obertes del govern d’Espanya.</p>
 <p>El que farem primer serà carregar el fitxer de dades i veure un petit resum de les dades que esteim tractant.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"covid.csv"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">";"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"covid.csv"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">";"</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   16200 obs. of  6 variables:
  $ Nacional                        : chr  "Total Nacional" "Total Nacional" "Total Nacional" "Total Nacional" ...
@@ -127,6 +131,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="anàlisi-exploratori" class="level2">
 <h2 class="anchored" data-anchor-id="anàlisi-exploratori">Anàlisi exploratori</h2>
+<p>Una vegada hem entés com tenim les dades estructurades, ens podem fer algunes preguntes sobre aquestes.</p>
+<section id="afecta-de-manera-similar-a-homes-o-dones" class="level3">
+<h3 class="anchored" data-anchor-id="afecta-de-manera-similar-a-homes-o-dones">Afecta de manera similar a homes o dones?</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="practica_1_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>cov_Total = filter(tb_cov, Sexo == “Total”, Comunidades.y.Ciudades.Autónomas == ““, Covid.19 ==”Total”) cov_ComAut = filter(tb_cov, Sexo == “Total”, Comunidades.y.Ciudades.Autónomas != ““, Covid.19 ==”Total”, Semana.de.defunción == “Total”)</p>
+</section>
 </section>
 
 </main>
