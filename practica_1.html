@@ -97,12 +97,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p><strong>Autors:</strong> Melcion Ciudad, Miquel Àngel Llauger, Albert Moya.</p>
-<section id="presentació" class="level1">
-<h1>Presentació</h1>
-<p>Hem elegit el dataset <a href="https://datos.gob.es/es/catalogo/ea0010587-defunciones-por-covid-19-comunidad-y-ciudad-autonoma-de-defuncion-sexo-y-semana-de-defuncion-ecm-identificador-api-tpx-sociedad_2589-salud_2590-edcm_2591-covid_a2022_10380-l0-01007-px1">Defunciones por covid</a> de la pàgina web del govern d’Espanya.</p>
+<section id="introducció" class="level2">
+<h2 class="anchored" data-anchor-id="introducció">Introducció</h2>
+<p>Hem elegit el dataset <a href="https://datos.gob.es/es/catalogo/ea0010587-defunciones-por-covid-19-comunidad-y-ciudad-autonoma-de-defuncion-sexo-y-semana-de-defuncion-ecm-identificador-api-tpx-sociedad_2589-salud_2590-edcm_2591-covid_a2022_10380-l0-01007-px1">Defunciones por Covid 19</a> de la pàgina web de dades obertes del govern d’Espanya.</p>
+<p>El que farem primer serà carregar el fitxer de dades i veure un petit resum de les dades que esteim tractant.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"dataset.csv"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"covid.csv"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">";"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   16200 obs. of  6 variables:
+ $ Nacional                        : chr  "Total Nacional" "Total Nacional" "Total Nacional" "Total Nacional" ...
+ $ Comunidades.y.Ciudades.Autónomas: chr  "" "" "" "" ...
+ $ Covid.19                        : chr  "Total" "Total" "Total" "Total" ...
+ $ Sexo                            : chr  "Total" "Total" "Total" "Total" ...
+ $ Semana.de.defunción             : chr  "Total" "2021SM01" "2021SM02" "2021SM03" ...
+ $ Total                           : int  464417 2801 9953 10670 10855 11205 10886 10103 9316 8931 ...</code></pre>
 </div>
+</div>
+<p>D’un primer cop d’ull podem veure que tenim 126000 observacions amb 6 variables cada una. Aquestes són:</p>
+<ul>
+<li>Nacional: és repeteix a totes les observacions, per tant no ofereix informació rellevant</li>
+<li>Comunidades y ciudades autónomas: dades qualitatives que mostra les comunitats autonomes d’Espanya</li>
+<li>Covid 19: Indíca la relació amb la malaltia, si és sospitós, identificat…</li>
+<li>Sexo</li>
+<li>Semana de defunción: semana en que estan preses les dades, n’hi ha 53</li>
+<li>Total: total dels indicadors anteriors</li>
+</ul>
+<p>Aquí ja ens hem trobat el primer problema, resulta que les dades no estan en format <em>tidy</em> i presenten un tipus de repeticions, per exemple, hi ha una columna que ens mostra el total de defuncions de cada una de les categories, però dins la mateixa columna, tenim el total de morts per Covid 19, el total de morts homes de Covid 19 i, entre d’altres, el total de morts a La Rioja que són dones i sospitoses d’haver tengut el Covid 19. Això ens ha donat alguns problemes, però emprant alguns filtres ho hem solucionat.</p>
+</section>
+<section id="anàlisi-exploratori" class="level2">
+<h2 class="anchored" data-anchor-id="anàlisi-exploratori">Anàlisi exploratori</h2>
 </section>
 
 </main>

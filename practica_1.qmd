@@ -7,16 +7,31 @@ editor: visual
 **Autors:** Melcion Ciudad, Miquel Àngel Llauger, Albert Moya.
 
 
-# Presentació
+## Introducció
 
-Hem elegit el dataset [Defunciones por covid](https://datos.gob.es/es/catalogo/ea0010587-defunciones-por-covid-19-comunidad-y-ciudad-autonoma-de-defuncion-sexo-y-semana-de-defuncion-ecm-identificador-api-tpx-sociedad_2589-salud_2590-edcm_2591-covid_a2022_10380-l0-01007-px1) de la pàgina web del govern d'Espanya.
+Hem elegit el dataset [Defunciones por Covid 19](https://datos.gob.es/es/catalogo/ea0010587-defunciones-por-covid-19-comunidad-y-ciudad-autonoma-de-defuncion-sexo-y-semana-de-defuncion-ecm-identificador-api-tpx-sociedad_2589-salud_2590-edcm_2591-covid_a2022_10380-l0-01007-px1) de la pàgina web de dades obertes del govern d'Espanya.
+
+El que farem primer serà carregar el fitxer de dades i veure un petit resum de les dades que esteim tractant.
 
 
 ```{r}
-df <- read.csv("dataset.csv", header = TRUE)
+df <- read.csv("covid.csv", header = TRUE, sep = ";")
+str(df)
 ```
 
+D'un primer cop d'ull podem veure que tenim 126000 observacions amb 6 variables cada una. Aquestes són:
 
+- Nacional: és repeteix a totes les observacions, per tant no ofereix informació rellevant
+- Comunidades y ciudades autónomas: dades qualitatives que mostra les comunitats autonomes d'Espanya
+- Covid 19: Indíca la relació amb la malaltia, si és sospitós, identificat...
+- Sexo
+- Semana de defunción: semana en que estan preses les dades, n'hi ha 53
+- Total: total dels indicadors anteriors
+
+Aquí ja ens hem trobat el primer problema, resulta que les dades no estan en format *tidy* i presenten un tipus de repeticions, per exemple, hi ha una columna que ens mostra el total de defuncions de cada una de les categories, però dins la mateixa columna, tenim el total de morts per Covid 19, el total de morts homes de Covid 19 i, entre d'altres, el total de morts a La Rioja que són dones i sospitoses d'haver tengut el Covid 19. Això ens ha donat alguns problemes, però emprant alguns filtres ho hem solucionat.
+
+
+## Anàlisi exploratori
 
 
 
