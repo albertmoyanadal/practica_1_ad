@@ -32,11 +32,11 @@ head(df)
 
 D'un primer cop d'ull podem veure que tenim 126000 observacions amb 6 variables cada una. Aquestes són:
 
-- Nacional: és repeteix a totes les observacions, per tant no ofereix informació rellevant i l'hem eliminat del dataframe
-- Comunidades y ciudades autónomas: dades qualitatives que mostra les comunitats autonomes d'Espanya
-- Covid 19: Indíca la relació amb la malaltia, si és sospitós, identificat...
+- Nacional: es repeteix a totes les observacions, per tant no ofereix informació rellevant i l'hem eliminat del dataframe.
+- Comunidades y ciudades autónomas: dades qualitatives que mostra les comunitats autonomes d'Espanya.
+- Covid 19: Indica la relació amb la malaltia, si és sospitós, identificat...
 - Sexo
-- Semana de defunción: semana en que estan preses les dades, n'hi ha 53
+- Semana de defunción: setmana en que estan preses les dades, n'hi ha 53
 - Total: total dels indicadors anteriors
 
 Aquí ja ens hem trobat el primer problema, resulta que les dades no estan en format *tidy* i presenten un tipus de repeticions, per exemple, hi ha una columna que ens mostra el total de defuncions de cada una de les categories, però dins la mateixa columna, tenim el total de morts per Covid 19, el total de morts homes de Covid 19 i, entre d'altres, el total de morts a La Rioja que són dones i sospitoses d'haver tengut el Covid 19. Això ens ha donat alguns problemes, però emprant alguns filtres ho hem solucionat.
