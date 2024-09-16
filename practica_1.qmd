@@ -1,6 +1,24 @@
 ---
 title: "Pràctica 1"
-authors: "Melcion Ciudad, Miquel Àngel Llauger, Albert Moya"
 format: html
 editor: visual
 ---
+ 
+**Autors:** Melcion Ciudad, Miquel Àngel Llauger, Albert Moya.
+
+
+# Presentació
+
+Hem elegit el dataset [Defunciones por covid](https://datos.gob.es/es/catalogo/ea0010587-defunciones-por-covid-19-comunidad-y-ciudad-autonoma-de-defuncion-sexo-y-semana-de-defuncion-ecm-identificador-api-tpx-sociedad_2589-salud_2590-edcm_2591-covid_a2022_10380-l0-01007-px1) de la pàgina web del govern d'Espanya.
+
+
+```{r}
+df <- read.csv("dataset.csv", header = TRUE)
+```
+
+
+
+
+
+
+
